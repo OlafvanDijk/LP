@@ -11,7 +11,7 @@ namespace _t_Sloepke.Business
 {
     public class DataHandler
     {
-        public static string email;
+        public static string email = string.Empty;
 
         public void Login(string email, string naam)
         {
@@ -25,67 +25,99 @@ namespace _t_Sloepke.Business
 
         public List<HuurContract> getHuur()
         {
-            return null;
+            return Database.getHuur();
         }
 
         public List<HuurContract> getHuurH()
         {
-            return null;
+            if (email != string.Empty)
+            {
+                return Database.getHuurH(email);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public void cHuurder(string email, string naam)
         {
-
+            if (Database.cHuurder(email, naam) == false)
+            {
+                MessageBox.Show("Uw email bestaat al in onze database. Kies een andere email.");
+            }
         }
 
         public void createHuurContract(HuurContract huur)
         {
-            
+            if (Database.createHuurContract(huur) == false)
+            {
+                MessageBox.Show("Er ging iets fout :P.", "Man man man");
+            }
         }
 
         public void bootT(Boot boot)
         {
-
+            if (Database.bootT(boot) == false)
+            {
+                MessageBox.Show("Er ging iets fout :P.", "Man man man");
+            }
         }
 
         public void bootV(string naam)
         {
+            if (Database.bootV(naam) == false)
+            {
+                MessageBox.Show("Er ging iets fout :P.", "Man man man");
+            }
 
         }
 
         public void bootW(Boot boot, string orgNaam)
         {
-
+            if (Database.bootW(boot, orgNaam) == false)
+            {
+                MessageBox.Show("Er ging iets fout :P.", "Man man man");
+            }
         }
 
         public void artT(string naam)
         {
-
+            if (Database.artT(naam) == false)
+            {
+                MessageBox.Show("Er ging iets fout :P.", "Man man man");
+            }
         }
 
         public void artV(string naam)
         {
-
+            if (Database.artV(naam) == false)
+            {
+                MessageBox.Show("Er ging iets fout :P.", "Man man man");
+            }
         }
 
         public void artW(string naam, string orgNaam)
         {
-
+            if (Database.artW(naam, orgNaam) == false)
+            {
+                MessageBox.Show("Er ging iets fout :P.", "Man man man");
+            }
         }
 
-        public int aantalMeren(int budget, Boot boot, int aantalArt)
+        public int aantalMeren(int budget, List<Boot> boot, List<string> Art)
         {
             return 0;
         }
 
         public List<Boot> getBoten()
         {
-            return null;
+            return Database.getBoten();
         }
 
         public List<string> getArtikelen()
         {
-            return null;
+            return Database.getArtikelen();
         }
     }
 }
