@@ -37,9 +37,11 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Location = new System.Drawing.Point(98, 40);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(248, 121);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = resources.GetString("textBox1.Text");
@@ -62,6 +64,7 @@
             this.bttnBoot.TabIndex = 2;
             this.bttnBoot.Text = "Boot huren";
             this.bttnBoot.UseVisualStyleBackColor = true;
+            this.bttnBoot.Click += new System.EventHandler(this.bttnBoot_Click);
             // 
             // Home
             // 

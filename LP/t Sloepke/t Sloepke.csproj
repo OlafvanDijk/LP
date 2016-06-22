@@ -7,8 +7,8 @@
     <ProjectGuid>{84388DC2-68A9-4FD0-A497-F18AEAA6756D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_t_Sloepke</RootNamespace>
-    <AssemblyName>’t Sloepke</AssemblyName>
+    <RootNamespace>t_Sloepke</RootNamespace>
+    <AssemblyName>t Sloepke</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
