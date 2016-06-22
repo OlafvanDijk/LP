@@ -79,5 +79,46 @@ namespace _t_Sloepke.DatabaseFolder
             }
             return check;
         }
+
+        public static bool cHuurder(string email, string naam)
+        {
+            bool check = false;
+            bool yn = true;
+            try
+            {
+                OpenConnection();
+                m_command = new OracleCommand();
+                m_command.Connection = m_conn;
+                m_command.CommandText = "SELECT email FROM Huurder WHERE email = :email AND naam = :naam";
+                m_command.Parameters.Add("email", OracleDbType.Varchar2).Value = email;
+                m_command.Parameters.Add("naam", OracleDbType.Varchar2).Value = naam;
+                m_command.ExecuteNonQuery();
+                using (OracleDataReader _Reader = m_command.ExecuteReader())
+                {
+                    if (_Reader.HasRows)
+                    {
+                        yn = false;
+                    }
+                }
+                if (yn == true)
+                {
+                    OpenConnection();
+                    m_command = new OracleCommand();
+                    m_command.Connection = m_conn;
+                    m_command.CommandText = "INSERT INTO Huurder (email, naam) VALUES (:email, :naam)";
+                    m_command.Parameters.Add("email", OracleDbType.Varchar2).Value = email;
+                    m_command.Parameters.Add("naam", OracleDbType.Varchar2).Value = naam;
+                    m_command.ExecuteNonQuery();
+                    check = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                check = false;
+                CloseConnection();
+                Console.WriteLine(ex.Message);
+            }
+            return check;
+        }
     }
 }

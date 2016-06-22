@@ -33,7 +33,7 @@ namespace _t_Sloepke.Business
             return null;
         }
 
-        public void createHuur(string email, string naam)
+        public void cHuurder(string email, string naam)
         {
 
         }
