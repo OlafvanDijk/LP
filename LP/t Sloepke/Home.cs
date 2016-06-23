@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _t_Sloepke.Business.BootFolder;
+using _t_Sloepke.Business;
+using t_Sloepke;
 
 namespace _t_Sloepke
 {
@@ -19,17 +22,16 @@ namespace _t_Sloepke
 
         private void bttnLogin_Click(object sender, EventArgs e)
         {
-            Business.BootFolder.Motorboot boot = new Business.BootFolder.Motorboot("hoi", 4, 3);
-            DatabaseFolder.Database.bootT(boot);
-            //this.Hide();
-            //Login login = new Login();
-            //login.Show();
+            this.Hide();
+            Login login = new Login();
+            login.Show();
         }
 
         private void bttnBoot_Click(object sender, EventArgs e)
         {
-            Business.BootFolder.Spierkrachtboot boot = new Business.BootFolder.Spierkrachtboot("hoi", 4);
-            DatabaseFolder.Database.bootT(boot);
+            this.Hide();
+            Huur_menu huurmenu = new Huur_menu();
+            huurmenu.Show();
         }
     }
 }

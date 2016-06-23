@@ -13,7 +13,7 @@ namespace _t_Sloepke.Business
     {
         public static string email = string.Empty;
 
-        public void Login(string email, string naam)
+        public static void Login(string email, string naam)
         {
             Database.Login(email, naam);
         }
@@ -23,12 +23,12 @@ namespace _t_Sloepke.Business
             MessageBox.Show(message);
         }
 
-        public List<HuurContract> getHuur()
+        public static List<HuurContract> getHuur()
         {
             return Database.getHuur();
         }
 
-        public List<HuurContract> getHuurH()
+        public static List<HuurContract> getHuurH()
         {
             if (email != string.Empty)
             {
@@ -40,7 +40,7 @@ namespace _t_Sloepke.Business
             }
         }
 
-        public void cHuurder(string email, string naam)
+        public static void cHuurder(string email, string naam)
         {
             if (Database.cHuurder(email, naam) == false)
             {
@@ -48,7 +48,7 @@ namespace _t_Sloepke.Business
             }
         }
 
-        public void createHuurContract(HuurContract huur)
+        public static void createHuurContract(HuurContract huur)
         {
             if (Database.createHuurContract(huur) == false)
             {
@@ -56,7 +56,7 @@ namespace _t_Sloepke.Business
             }
         }
 
-        public void bootT(Boot boot)
+        public static void bootT(Boot boot)
         {
             if (Database.bootT(boot) == false)
             {
@@ -64,7 +64,7 @@ namespace _t_Sloepke.Business
             }
         }
 
-        public void bootV(string naam)
+        public static void bootV(string naam)
         {
             if (Database.bootV(naam) == false)
             {
@@ -73,7 +73,7 @@ namespace _t_Sloepke.Business
 
         }
 
-        public void bootW(Boot boot, string orgNaam)
+        public static void bootW(Boot boot, string orgNaam)
         {
             if (Database.bootW(boot, orgNaam) == false)
             {
@@ -81,7 +81,7 @@ namespace _t_Sloepke.Business
             }
         }
 
-        public void artT(string naam)
+        public static void artT(string naam)
         {
             if (Database.artT(naam) == false)
             {
@@ -89,7 +89,7 @@ namespace _t_Sloepke.Business
             }
         }
 
-        public void artV(string naam)
+        public static void artV(string naam)
         {
             if (Database.artV(naam) == false)
             {
@@ -97,7 +97,7 @@ namespace _t_Sloepke.Business
             }
         }
 
-        public void artW(string naam, string orgNaam)
+        public static void artW(string naam, string orgNaam)
         {
             if (Database.artW(naam, orgNaam) == false)
             {
@@ -105,17 +105,17 @@ namespace _t_Sloepke.Business
             }
         }
 
-        public int aantalMeren(int budget, List<Boot> boot, List<string> Art)
+        public static int aantalMeren(int budget, List<Boot> boot, List<string> Art, string meren)
         {
             return 0;
         }
 
-        public List<Boot> getBoten()
+        public static List<Boot> getBoten()
         {
             return Database.getBoten();
         }
 
-        public List<string> getArtikelen()
+        public static List<string> getArtikelen()
         {
             return Database.getArtikelen();
         }

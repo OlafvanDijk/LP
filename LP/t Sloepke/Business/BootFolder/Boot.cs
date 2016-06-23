@@ -17,5 +17,10 @@ namespace _t_Sloepke.Business.BootFolder
             this.naam = naam;
             this.prijs = prijs;
         }
+
+        public override string ToString()
+        {
+            return naam + " €" + prijs + ",- per dag";
+        }
     }
 }
