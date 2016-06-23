@@ -54,6 +54,7 @@
     <Compile Include="Business\DataHandler.cs" />
     <Compile Include="Business\HuurContract.cs" />
     <Compile Include="Business\BootFolder\Motorboot.cs" />
+    <Compile Include="Business\Verwachting.cs" />
     <Compile Include="DatabaseFolder\Database.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -114,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Temperatuur\verwachting.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

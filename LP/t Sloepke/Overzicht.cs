@@ -34,49 +34,56 @@ namespace t_Sloepke
         private void bttnexp_Click(object sender, EventArgs e)
         {
             HuurContract a;
-            bool check = false;
+
             if (HuurContractenA != null || HuurContractenB != null)
             {
-                try
+                if (HuurContractenA.SelectedItem != null)
                 {
-                    if (HuurContractenA.SelectedItem != null)
-                    {
-                        a = (HuurContract)HuurContractenA.SelectedItem;
-                    }
-                    else
-                    {
-                        a = (HuurContract)HuurContractenA.SelectedItem;
-                    }
-                    string boten = string.Empty;
-                    string artikelen = string.Empty;
-                    foreach (string boot in a.boot)
-                    {
-                        boten = boot + " ";
-                    }
-                    foreach (string artikel in a.artikelen)
-                    {
-                        artikelen = artikel + " ";
-                    }
-                    FileStream file = new FileStream("../../../Huurcontracten/HuurContract" + a.HID + ".txt", FileMode.Create, FileAccess.Write);
-                    StreamWriter fileWriter = new StreamWriter(file);
-                    fileWriter.WriteLine("Boten: " + boten);
-                    fileWriter.WriteLine("Artikelen: " + artikelen);
-                    fileWriter.WriteLine("Verhuurder: " + a.email);
-                    fileWriter.WriteLine("Huur periode: " + a.datumVanaf.Date.ToShortDateString() + " - " + a.datumTot.Date.ToShortDateString());
-                    fileWriter.Flush();
-                    fileWriter.Close();
-                    check = true;
+                    a = (HuurContract)HuurContractenA.SelectedItem;
                 }
-                catch (IOException)
+                else
                 {
-                    check = false;
-                    MessageBox.Show("Het bestand is niet aangemaakt. Er ging iets fout.");
+                    a = (HuurContract)HuurContractenA.SelectedItem;
                 }
+                DataHandler.export(a);
+            }
+        }
 
-                if (check == true)
+        private void HuurContractenA_Click(object sender, EventArgs e)
+        {
+            if (HuurContractenB.SelectedItem != null)
+            {
+                HuurContractenB.SelectedItem = null;
+            }
+        }
+
+        private void HuurContractenB_Click(object sender, EventArgs e)
+        {
+            if (HuurContractenA.SelectedItem != null)
+            {
+                HuurContractenA.SelectedItem = null;
+            }
+        }
+
+        private void bttntemp_Click(object sender, EventArgs e)
+        {
+            gvlTmp.Items.Clear();
+            HuurContract a;
+            if (HuurContractenA.SelectedItem != null || HuurContractenB.SelectedItem != null)
+            {
+                if (HuurContractenA.SelectedItem != null)
                 {
-                    MessageBox.Show("Het bestand is succesvol aangemaakt.");
+                    a = (HuurContract)HuurContractenA.SelectedItem;
+                    DataHandler.temp();
+                    DataHandler.checkdat(a);
                 }
+                else
+                {
+                    a = (HuurContract)HuurContractenB.SelectedItem;
+                }
+                DataHandler.temp();
+                DataHandler.checkdat(a);
+                gvlTmp.DataSource = DataHandler.gevoel();
             }
         }
     }
