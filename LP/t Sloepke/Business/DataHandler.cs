@@ -12,6 +12,7 @@ namespace _t_Sloepke.Business
     public class DataHandler
     {
         public static string email = string.Empty;
+        public static decimal sluisgeld = 0;
 
         public static void Login(string email, string naam)
         {
@@ -108,12 +109,12 @@ namespace _t_Sloepke.Business
         public static int aantalMeren(decimal budget, double totaal)
         {
             int aantalmeren = 0;
-            if (budget > Convert.ToDecimal(totaal))
+            int counter1 = 5;
+            while (budget > Convert.ToDecimal(totaal) && aantalmeren < 12)
             {
-                int counter1 = 5;
-                while (budget >= (Convert.ToDecimal(totaal) + Convert.ToDecimal(1.50)))
+                if (budget >= (Convert.ToDecimal(totaal) + Convert.ToDecimal(1.50)))
                 {
-                    while (counter1 > 0)
+                    if (counter1 > 0)
                     {
                         aantalmeren++;
                         budget -= 1;
@@ -122,7 +123,7 @@ namespace _t_Sloepke.Business
 
                     if (counter1 <= 0)
                     {
-                        while (aantalmeren < 12)
+                        if (aantalmeren < 12)
                         {
                             aantalmeren++;
                             budget -= Convert.ToDecimal(1.50);
@@ -130,9 +131,9 @@ namespace _t_Sloepke.Business
                         }
                     }
                 }
-                while (counter1 > 0)
+                else if (counter1 > 0)
                 {
-                    if (budget >= Convert.ToDecimal(totaal))
+                    if (budget >= (Convert.ToDecimal(totaal) + 1))
                     {
                         aantalmeren++;
                         budget -= 1;
@@ -140,16 +141,17 @@ namespace _t_Sloepke.Business
                     }
                     else
                     {
-                        counter1--;
+                        budget = Convert.ToDecimal(totaal);
                     }
                 }
-                while (counter1 <= 0 && aantalmeren < 12)
+                else if (counter1 <= 0 && aantalmeren < 12)
                 {
                     aantalmeren++;
-                    budget -= Convert.ToDecimal(1.50);
+                    budget = Convert.ToDecimal(totaal);
                     counter1--;
                 }
             }
+            sluisgeld = (counter1 * counter1 / 2) * Convert.ToDecimal(0.5);
             return aantalmeren;
         }
 

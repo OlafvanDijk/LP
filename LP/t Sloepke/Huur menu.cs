@@ -195,7 +195,10 @@ namespace t_Sloepke
                     }
                     totaal = (prijsartpd * dagen) + (prijsbootpd * dagen) + vaar;
                     aantalmeren = DataHandler.aantalMeren(budget.Value, totaal);
-                    lblaantalf.Text = lblaantalf.Text + aantalmeren;
+                    lblaantalf.Text = "Aantal Friese meren: " + aantalmeren;
+                    lblSluis.Text = "Sluis geld: €" + DataHandler.sluisgeld;
+                    lblTotb.Text = "Totaal bedrag: €" + totaal;
+                    lblTotpd.Text = "Totaal bedrag per dag: €" + (totaal / dagen);
                 }
                 else
                 {

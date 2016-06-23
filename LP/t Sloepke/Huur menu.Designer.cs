@@ -390,9 +390,9 @@
             this.lblTotb.AutoSize = true;
             this.lblTotb.Location = new System.Drawing.Point(12, 433);
             this.lblTotb.Name = "lblTotb";
-            this.lblTotb.Size = new System.Drawing.Size(124, 13);
+            this.lblTotb.Size = new System.Drawing.Size(85, 13);
             this.lblTotb.TabIndex = 30;
-            this.lblTotb.Text = "Totaal bedrag per dag: €";
+            this.lblTotb.Text = "Totaal bedrag: €";
             // 
             // label4
             // 
