@@ -14,6 +14,9 @@ namespace t_Sloepke
 {
     public partial class Huur_menu : Form
     {
+        int prijsbootpd;
+        double prijsartpd;
+
         public Huur_menu()
         {
             InitializeComponent();
@@ -21,18 +24,35 @@ namespace t_Sloepke
             {
                 BotenL.Items.Add(boot);
             }
+            foreach (string artikel in DataHandler.getArtikelen())
+            {
+                ArtL.Items.Add(artikel);
+            }
+
+            DateV.Value = DateTime.Now;
+            DateT.Value = DateTime.Now;
         }
 
         private void BootNR_Click(object sender, EventArgs e)
         {
-            if (BotenL.SelectedItem != null)
+            if (budget.Value != 0)
             {
-                BotenR.Items.Add(BotenL.SelectedItem);
-                BotenL.Items.Remove(BotenL.SelectedItem);
+                if (BotenL.SelectedItem != null)
+                {
+                    BotenR.Items.Add(BotenL.SelectedItem);
+                    Boot boot = (Boot)BotenL.SelectedItem;
+                    prijsbootpd += boot.prijs;
+                    lblkostenboot.Text = "€" + prijsbootpd.ToString() + ",-";
+                    BotenL.Items.Remove(BotenL.SelectedItem);
+                }
+                else
+                {
+                    MessageBox.Show("Selecteer eerst een boot.");
+                }
             }
             else
             {
-                MessageBox.Show("Selecteer eerst een boot.");
+                MessageBox.Show("Vul eerst een budget in.");
             }
         }
 
@@ -41,6 +61,9 @@ namespace t_Sloepke
             if (BotenR.SelectedItem != null)
             {
                 BotenL.Items.Add(BotenR.SelectedItem);
+                Boot boot = (Boot)BotenR.SelectedItem;
+                prijsbootpd -= boot.prijs;
+                lblkostenboot.Text = "€" + prijsbootpd.ToString() + ",-";
                 BotenR.Items.Remove(BotenR.SelectedItem);
             }
             else
@@ -67,14 +90,23 @@ namespace t_Sloepke
 
         private void ArtNR_Click(object sender, EventArgs e)
         {
-            if (ArtL.SelectedItem != null)
+            if (budget.Value != 0)
             {
-                ArtR.Items.Add(ArtL.SelectedItem);
-                ArtL.Items.Remove(ArtL.SelectedItem);
+                if (ArtL.SelectedItem != null)
+                {
+                    ArtR.Items.Add(ArtL.SelectedItem);
+                    prijsartpd = ArtR.Items.Count * 1.25;
+                    lblkostenart.Text = "€" + prijsartpd.ToString() + ",-";
+                    ArtL.Items.Remove(ArtL.SelectedItem);
+                }
+                else
+                {
+                    MessageBox.Show("Selecteer eerst een artikel.");
+                }
             }
             else
             {
-                MessageBox.Show("Selecteer eerst een artikel.");
+                MessageBox.Show("Vul eerst een budget in.");
             }
         }
 
@@ -84,6 +116,8 @@ namespace t_Sloepke
             {
                 ArtL.Items.Add(ArtR.SelectedItem);
                 ArtR.Items.Remove(ArtR.SelectedItem);
+                prijsartpd = ArtR.Items.Count * 1.25;
+                lblkostenart.Text = "€" + prijsartpd.ToString() + ",-";
             }
             else
             {
@@ -104,6 +138,73 @@ namespace t_Sloepke
             if (ArtL.SelectedItem != null)
             {
                 ArtL.SetSelected(ArtL.SelectedIndex, false);
+            }
+        }
+
+        private void BotenL_DoubleClick(object sender, EventArgs e)
+        {
+            if (BotenL.SelectedItem != null)
+            {
+                Boot boot = (Boot)BotenL.SelectedItem;
+                Type a = boot.GetType();
+                if (a == typeof(Spierkrachtboot))
+                {
+                    Spierkrachtboot bootje = (Spierkrachtboot)boot;
+                    MessageBox.Show(bootje.naam + " €" + bootje.prijs.ToString() + ",- per dag.");
+                }
+                else if (a == typeof(Motorboot))
+                {
+                    Motorboot bootje = (Motorboot)boot;
+                    MessageBox.Show(bootje.naam + " €" + bootje.prijs.ToString() + ",- per dag." + Environment.NewLine + "Tankinhoud: " + bootje.tankInhoud.ToString() + ", Actie radius: " + bootje.actieRadius.ToString());
+                }
+            }
+        }
+
+        private void bttnBdagen_Click(object sender, EventArgs e)
+        {
+            if (DateT.Value.Date >= DateV.Value.Date)
+            {
+                TimeSpan days = DateT.Value.Date - DateV.Value.Date;
+                lbldagen.Text = "Aantal dagen: " + Convert.ToInt32(days.Days + 1).ToString();
+            }
+            else
+            {
+                MessageBox.Show("U kunt niet terug in de tijd. Verrander de datums.");
+            }
+        }
+
+        private void bttnBereken_Click(object sender, EventArgs e)
+        {
+            if (budget.Value != 0)
+            {
+                int dagen;
+                double totaal;
+                int vaar = 0;
+                int aantalmeren = 0;
+                if (DateT.Value.Date >= DateV.Value.Date)
+                {
+                    TimeSpan days = DateT.Value.Date - DateV.Value.Date;
+                    dagen = Convert.ToInt32(days.Days + 1);
+                    if (IJsselmeercheck.Checked)
+                    {
+                        vaar = dagen * 2;
+                    }
+                    if (Noordzeecheck.Checked)
+                    {
+                        vaar = vaar + (dagen * 2);
+                    }
+                    totaal = (prijsartpd * dagen) + (prijsbootpd * dagen) + vaar;
+                    aantalmeren = DataHandler.aantalMeren(budget.Value, totaal);
+                    lblaantalf.Text = lblaantalf.Text + aantalmeren;
+                }
+                else
+                {
+                    MessageBox.Show("U kunt niet terug in de tijd. Verrander de datums.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vul een budget in.");
             }
         }
     }

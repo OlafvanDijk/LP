@@ -105,9 +105,52 @@ namespace _t_Sloepke.Business
             }
         }
 
-        public static int aantalMeren(int budget, List<Boot> boot, List<string> Art, string meren)
+        public static int aantalMeren(decimal budget, double totaal)
         {
-            return 0;
+            int aantalmeren = 0;
+            if (budget > Convert.ToDecimal(totaal))
+            {
+                int counter1 = 5;
+                while (budget >= (Convert.ToDecimal(totaal) + Convert.ToDecimal(1.50)))
+                {
+                    while (counter1 > 0)
+                    {
+                        aantalmeren++;
+                        budget -= 1;
+                        counter1--;
+                    }
+
+                    if (counter1 <= 0)
+                    {
+                        while (aantalmeren < 12)
+                        {
+                            aantalmeren++;
+                            budget -= Convert.ToDecimal(1.50);
+                            counter1--;
+                        }
+                    }
+                }
+                while (counter1 > 0)
+                {
+                    if (budget >= Convert.ToDecimal(totaal))
+                    {
+                        aantalmeren++;
+                        budget -= 1;
+                        counter1--;
+                    }
+                    else
+                    {
+                        counter1--;
+                    }
+                }
+                while (counter1 <= 0 && aantalmeren < 12)
+                {
+                    aantalmeren++;
+                    budget -= Convert.ToDecimal(1.50);
+                    counter1--;
+                }
+            }
+            return aantalmeren;
         }
 
         public static List<Boot> getBoten()
