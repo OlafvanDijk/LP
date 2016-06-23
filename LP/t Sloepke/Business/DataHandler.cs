@@ -14,14 +14,16 @@ namespace _t_Sloepke.Business
         public static string email = string.Empty;
         public static decimal sluisgeld = 0;
 
-        public static void Login(string email, string naam)
+        public static bool Login(string email, string naam)
         {
-            Database.Login(email, naam);
-        }
-
-        public static void LoginFail(string message)
-        {
-            MessageBox.Show(message);
+            if (Database.Login(email, naam) == false)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public static List<HuurContract> getHuur()
@@ -41,12 +43,14 @@ namespace _t_Sloepke.Business
             }
         }
 
-        public static void cHuurder(string email, string naam)
+        public static bool cHuurder(string email, string naam)
         {
             if (Database.cHuurder(email, naam) == false)
             {
                 MessageBox.Show("Uw email bestaat al in onze database. Kies een andere email.");
+                return false;
             }
+            return true;
         }
 
         public static void createHuurContract(HuurContract huur)
@@ -106,13 +110,13 @@ namespace _t_Sloepke.Business
             }
         }
 
-        public static int aantalMeren(decimal budget, double totaal)
+        public static int aantalMeren(decimal budget, decimal totaal)
         {
             int aantalmeren = 0;
             int counter1 = 5;
-            while (budget > Convert.ToDecimal(totaal) && aantalmeren < 12)
+            while (budget > totaal && aantalmeren < 12)
             {
-                if (budget >= (Convert.ToDecimal(totaal) + Convert.ToDecimal(1.50)))
+                if (budget >= totaal + Convert.ToDecimal(1.50))
                 {
                     if (counter1 > 0)
                     {
@@ -133,7 +137,7 @@ namespace _t_Sloepke.Business
                 }
                 else if (counter1 > 0)
                 {
-                    if (budget >= (Convert.ToDecimal(totaal) + 1))
+                    if (budget >= (totaal + 1))
                     {
                         aantalmeren++;
                         budget -= 1;
@@ -141,17 +145,24 @@ namespace _t_Sloepke.Business
                     }
                     else
                     {
-                        budget = Convert.ToDecimal(totaal);
+                        budget = totaal;
                     }
                 }
                 else if (counter1 <= 0 && aantalmeren < 12)
                 {
                     aantalmeren++;
-                    budget = Convert.ToDecimal(totaal);
+                    budget = totaal;
                     counter1--;
                 }
             }
-            sluisgeld = (counter1 * counter1 / 2) * Convert.ToDecimal(0.5);
+            if (counter1 <= 0)
+            {
+                sluisgeld = (counter1 - counter1 - counter1 + 1) * Convert.ToDecimal(0.5);
+            }
+            else
+            {
+                sluisgeld = 0;
+            }
             return aantalmeren;
         }
 

@@ -31,6 +31,11 @@ namespace t_Sloepke
 
             DateV.Value = DateTime.Now;
             DateT.Value = DateTime.Now;
+            lblnaam.Visible = false;
+            lblemail.Visible = false;
+            txtnaam.Visible = false;
+            txtemail.Visible = false;
+            MaakHC.Visible = false;
         }
 
         private void BootNR_Click(object sender, EventArgs e)
@@ -175,6 +180,57 @@ namespace t_Sloepke
 
         private void bttnBereken_Click(object sender, EventArgs e)
         {
+            if (BotenR.Items.Count > 0)
+            {
+                gegevens();
+            }
+            else
+            {
+                MessageBox.Show("Voeg eerst een boot toe");
+            }
+        }
+
+        private void MaakHC_Click(object sender, EventArgs e)
+        {
+            List<string> bootnamen = new List<string>();
+            List<string> artikelen = new List<string>();
+            foreach (Boot b in BotenR.Items)
+            {
+                bootnamen.Add(b.naam);
+            }
+            foreach (string a in ArtR.Items)
+            {
+                artikelen.Add(a);
+            }
+            if (DataHandler.email == string.Empty)
+            {
+                if (txtemail.Text != string.Empty && txtnaam.Text != string.Empty)
+                {
+                    if (DataHandler.cHuurder(txtemail.Text, txtnaam.Text) == true)
+                    {
+                        HuurContract huurc = new HuurContract(bootnamen, txtemail.Text, DateV.Value.Date, DateT.Value.Date, artikelen);
+                        DataHandler.createHuurContract(huurc);
+                        DataHandler.email = txtemail.Text;
+                        lblnaam.Visible = false;
+                        lblemail.Visible = false;
+                        txtnaam.Visible = false;
+                        txtemail.Visible = false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vul je email en naam in alstublieft.");
+                }
+            }
+            else
+            {
+                HuurContract huurc = new HuurContract(bootnamen, DataHandler.email, DateV.Value.Date, DateT.Value.Date, artikelen);
+                DataHandler.createHuurContract(huurc);
+            }
+        }
+
+        private void gegevens()
+        {
             if (budget.Value != 0)
             {
                 int dagen;
@@ -194,11 +250,26 @@ namespace t_Sloepke
                         vaar = vaar + (dagen * 2);
                     }
                     totaal = (prijsartpd * dagen) + (prijsbootpd * dagen) + vaar;
-                    aantalmeren = DataHandler.aantalMeren(budget.Value, totaal);
+                    aantalmeren = DataHandler.aantalMeren(budget.Value, Convert.ToDecimal(totaal));
                     lblaantalf.Text = "Aantal Friese meren: " + aantalmeren;
                     lblSluis.Text = "Sluis geld: €" + DataHandler.sluisgeld;
                     lblTotb.Text = "Totaal bedrag: €" + totaal;
                     lblTotpd.Text = "Totaal bedrag per dag: €" + (totaal / dagen);
+                    if (budget.Value > Convert.ToDecimal(totaal))
+                    {
+                        if (DataHandler.email == string.Empty)
+                        {
+                            lblnaam.Visible = true;
+                            lblemail.Visible = true;
+                            txtnaam.Visible = true;
+                            txtemail.Visible = true;
+                        }
+                        MaakHC.Visible = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Uw budget si te klein.");
+                    }
                 }
                 else
                 {
@@ -209,6 +280,32 @@ namespace t_Sloepke
             {
                 MessageBox.Show("Vul een budget in.");
             }
+        }
+
+        private void ArtR_DoubleClick(object sender, EventArgs e)
+        {
+            if (BotenR.SelectedItem != null)
+            {
+                Boot boot = (Boot)BotenR.SelectedItem;
+                Type a = boot.GetType();
+                if (a == typeof(Spierkrachtboot))
+                {
+                    Spierkrachtboot bootje = (Spierkrachtboot)boot;
+                    MessageBox.Show(bootje.naam + " €" + bootje.prijs.ToString() + ",- per dag.");
+                }
+                else if (a == typeof(Motorboot))
+                {
+                    Motorboot bootje = (Motorboot)boot;
+                    MessageBox.Show(bootje.naam + " €" + bootje.prijs.ToString() + ",- per dag." + Environment.NewLine + "Tankinhoud: " + bootje.tankInhoud.ToString() + ", Actie radius: " + bootje.actieRadius.ToString());
+                }
+            }
+        }
+
+        private void bttnOverzicht_Click(object sender, EventArgs e)
+        {
+            Overzicht over = new Overzicht();
+            over.Show();
+            this.Close();
         }
     }
 }

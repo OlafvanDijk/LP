@@ -18,6 +18,8 @@ namespace _t_Sloepke.Business
 
         public List<string> artikelen { get; set; }
 
+        public int HID { get; set; }
+
         public HuurContract(List<string> boot, string email, DateTime datumVanaf, DateTime datumTot, List<string> artikelen)
         {
             this.boot = boot;
@@ -25,6 +27,21 @@ namespace _t_Sloepke.Business
             this.datumVanaf = datumVanaf;
             this.datumTot = datumTot;
             this.artikelen = artikelen;
+        }
+
+        public HuurContract(List<string> boot, string email, DateTime datumVanaf, DateTime datumTot, List<string> artikelen, int HID)
+        {
+            this.boot = boot;
+            this.email = email;
+            this.datumVanaf = datumVanaf;
+            this.datumTot = datumTot;
+            this.artikelen = artikelen;
+            this.HID = HID;
+        }
+
+        public override string ToString()
+        {
+            return "boten: " + boot.Count + ", artikelen: " + artikelen.Count + ", " + datumVanaf.Date.ToShortDateString() + " - " + datumTot.Date.ToShortDateString();
         }
     }
 }

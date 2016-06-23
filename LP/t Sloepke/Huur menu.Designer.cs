@@ -49,10 +49,10 @@
             this.DateT = new System.Windows.Forms.DateTimePicker();
             this.DateV = new System.Windows.Forms.DateTimePicker();
             this.GBPeriode = new System.Windows.Forms.GroupBox();
-            this.lblvanaf = new System.Windows.Forms.Label();
-            this.lblTot = new System.Windows.Forms.Label();
-            this.bttnBdagen = new System.Windows.Forms.Button();
             this.lbldagen = new System.Windows.Forms.Label();
+            this.bttnBdagen = new System.Windows.Forms.Button();
+            this.lblTot = new System.Windows.Forms.Label();
+            this.lblvanaf = new System.Windows.Forms.Label();
             this.IJsselmeercheck = new System.Windows.Forms.CheckBox();
             this.Noordzeecheck = new System.Windows.Forms.CheckBox();
             this.varen = new System.Windows.Forms.GroupBox();
@@ -63,6 +63,12 @@
             this.lblSluis = new System.Windows.Forms.Label();
             this.lblTotb = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.MaakHC = new System.Windows.Forms.Button();
+            this.txtnaam = new System.Windows.Forms.TextBox();
+            this.lblnaam = new System.Windows.Forms.Label();
+            this.txtemail = new System.Windows.Forms.TextBox();
+            this.lblemail = new System.Windows.Forms.Label();
+            this.bttnOverzicht = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.budget)).BeginInit();
             this.GBPeriode.SuspendLayout();
             this.varen.SuspendLayout();
@@ -142,6 +148,7 @@
             this.ArtR.Size = new System.Drawing.Size(107, 134);
             this.ArtR.TabIndex = 7;
             this.ArtR.Click += new System.EventHandler(this.ArtR_Click);
+            this.ArtR.DoubleClick += new System.EventHandler(this.ArtR_DoubleClick);
             // 
             // ArtNR
             // 
@@ -270,23 +277,14 @@
             this.GBPeriode.TabStop = false;
             this.GBPeriode.Text = "Huur Periode";
             // 
-            // lblvanaf
+            // lbldagen
             // 
-            this.lblvanaf.AutoSize = true;
-            this.lblvanaf.Location = new System.Drawing.Point(7, 27);
-            this.lblvanaf.Name = "lblvanaf";
-            this.lblvanaf.Size = new System.Drawing.Size(38, 13);
-            this.lblvanaf.TabIndex = 20;
-            this.lblvanaf.Text = "Vanaf:";
-            // 
-            // lblTot
-            // 
-            this.lblTot.AutoSize = true;
-            this.lblTot.Location = new System.Drawing.Point(7, 80);
-            this.lblTot.Name = "lblTot";
-            this.lblTot.Size = new System.Drawing.Size(26, 13);
-            this.lblTot.TabIndex = 21;
-            this.lblTot.Text = "Tot:";
+            this.lbldagen.AutoSize = true;
+            this.lbldagen.Location = new System.Drawing.Point(7, 156);
+            this.lbldagen.Name = "lbldagen";
+            this.lbldagen.Size = new System.Drawing.Size(76, 13);
+            this.lbldagen.TabIndex = 23;
+            this.lbldagen.Text = "Aantal dagen: ";
             // 
             // bttnBdagen
             // 
@@ -298,14 +296,23 @@
             this.bttnBdagen.UseVisualStyleBackColor = true;
             this.bttnBdagen.Click += new System.EventHandler(this.bttnBdagen_Click);
             // 
-            // lbldagen
+            // lblTot
             // 
-            this.lbldagen.AutoSize = true;
-            this.lbldagen.Location = new System.Drawing.Point(7, 156);
-            this.lbldagen.Name = "lbldagen";
-            this.lbldagen.Size = new System.Drawing.Size(76, 13);
-            this.lbldagen.TabIndex = 23;
-            this.lbldagen.Text = "Aantal dagen: ";
+            this.lblTot.AutoSize = true;
+            this.lblTot.Location = new System.Drawing.Point(7, 80);
+            this.lblTot.Name = "lblTot";
+            this.lblTot.Size = new System.Drawing.Size(26, 13);
+            this.lblTot.TabIndex = 21;
+            this.lblTot.Text = "Tot:";
+            // 
+            // lblvanaf
+            // 
+            this.lblvanaf.AutoSize = true;
+            this.lblvanaf.Location = new System.Drawing.Point(7, 27);
+            this.lblvanaf.Name = "lblvanaf";
+            this.lblvanaf.Size = new System.Drawing.Size(38, 13);
+            this.lblvanaf.TabIndex = 20;
+            this.lblvanaf.Text = "Vanaf:";
             // 
             // IJsselmeercheck
             // 
@@ -403,11 +410,69 @@
             this.label4.TabIndex = 30;
             this.label4.Text = "Totaal bedrag per dag: €";
             // 
+            // MaakHC
+            // 
+            this.MaakHC.Location = new System.Drawing.Point(301, 515);
+            this.MaakHC.Name = "MaakHC";
+            this.MaakHC.Size = new System.Drawing.Size(157, 23);
+            this.MaakHC.TabIndex = 0;
+            this.MaakHC.Text = "Maak Huurcontract";
+            this.MaakHC.UseVisualStyleBackColor = true;
+            this.MaakHC.Click += new System.EventHandler(this.MaakHC_Click);
+            // 
+            // txtnaam
+            // 
+            this.txtnaam.Location = new System.Drawing.Point(55, 517);
+            this.txtnaam.Name = "txtnaam";
+            this.txtnaam.Size = new System.Drawing.Size(143, 20);
+            this.txtnaam.TabIndex = 1;
+            // 
+            // lblnaam
+            // 
+            this.lblnaam.AutoSize = true;
+            this.lblnaam.Location = new System.Drawing.Point(11, 520);
+            this.lblnaam.Name = "lblnaam";
+            this.lblnaam.Size = new System.Drawing.Size(38, 13);
+            this.lblnaam.TabIndex = 31;
+            this.lblnaam.Text = "Naam:";
+            // 
+            // txtemail
+            // 
+            this.txtemail.Location = new System.Drawing.Point(55, 491);
+            this.txtemail.Name = "txtemail";
+            this.txtemail.Size = new System.Drawing.Size(143, 20);
+            this.txtemail.TabIndex = 32;
+            // 
+            // lblemail
+            // 
+            this.lblemail.AutoSize = true;
+            this.lblemail.Location = new System.Drawing.Point(12, 494);
+            this.lblemail.Name = "lblemail";
+            this.lblemail.Size = new System.Drawing.Size(35, 13);
+            this.lblemail.TabIndex = 33;
+            this.lblemail.Text = "Email:";
+            // 
+            // bttnOverzicht
+            // 
+            this.bttnOverzicht.Location = new System.Drawing.Point(529, 515);
+            this.bttnOverzicht.Name = "bttnOverzicht";
+            this.bttnOverzicht.Size = new System.Drawing.Size(159, 23);
+            this.bttnOverzicht.TabIndex = 34;
+            this.bttnOverzicht.Text = "Ga naar het Overzicht";
+            this.bttnOverzicht.UseVisualStyleBackColor = true;
+            this.bttnOverzicht.Click += new System.EventHandler(this.bttnOverzicht_Click);
+            // 
             // Huur_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 464);
+            this.ClientSize = new System.Drawing.Size(727, 549);
+            this.Controls.Add(this.bttnOverzicht);
+            this.Controls.Add(this.lblemail);
+            this.Controls.Add(this.txtemail);
+            this.Controls.Add(this.lblnaam);
+            this.Controls.Add(this.MaakHC);
+            this.Controls.Add(this.txtnaam);
             this.Controls.Add(this.lblTotb);
             this.Controls.Add(this.lblSluis);
             this.Controls.Add(this.lblTotpd);
@@ -482,5 +547,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblTotb;
+        private System.Windows.Forms.Button MaakHC;
+        private System.Windows.Forms.TextBox txtnaam;
+        private System.Windows.Forms.Label lblnaam;
+        private System.Windows.Forms.TextBox txtemail;
+        private System.Windows.Forms.Label lblemail;
+        private System.Windows.Forms.Button bttnOverzicht;
     }
 }
