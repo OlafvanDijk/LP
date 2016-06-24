@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using t_Sloepke;
+using _t_Sloepke;
 
 namespace UnitTest
 {

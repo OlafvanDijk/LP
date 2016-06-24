@@ -43,7 +43,7 @@ namespace t_Sloepke
                 }
                 else
                 {
-                    a = (HuurContract)HuurContractenA.SelectedItem;
+                    a = (HuurContract)HuurContractenB.SelectedItem;
                 }
                 DataHandler.export(a);
             }

@@ -263,11 +263,11 @@ namespace _t_Sloepke.Business
                 string artikelen = string.Empty;
                 foreach (string boot in a.boot)
                 {
-                    boten = boot + " ";
+                    boten = boten + boot + " ";
                 }
                 foreach (string artikel in a.artikelen)
                 {
-                    artikelen = artikel + " ";
+                    artikelen = artikelen + artikel + " ";
                 }
                 FileStream file = new FileStream("../../../Huurcontracten/HuurContract" + a.HID + ".txt", FileMode.Create, FileAccess.Write);
                 StreamWriter fileWriter = new StreamWriter(file);
