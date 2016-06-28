@@ -35,6 +35,7 @@
             this.bttnexp = new System.Windows.Forms.Button();
             this.bttntemp = new System.Windows.Forms.Button();
             this.gvlTmp = new System.Windows.Forms.ListBox();
+            this.bttnhome = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // HuurContractenA
@@ -98,14 +99,25 @@
             this.gvlTmp.FormattingEnabled = true;
             this.gvlTmp.Location = new System.Drawing.Point(488, 265);
             this.gvlTmp.Name = "gvlTmp";
-            this.gvlTmp.Size = new System.Drawing.Size(230, 173);
+            this.gvlTmp.Size = new System.Drawing.Size(230, 199);
             this.gvlTmp.TabIndex = 6;
+            // 
+            // bttnhome
+            // 
+            this.bttnhome.Location = new System.Drawing.Point(488, 137);
+            this.bttnhome.Name = "bttnhome";
+            this.bttnhome.Size = new System.Drawing.Size(131, 23);
+            this.bttnhome.TabIndex = 7;
+            this.bttnhome.Text = "Home";
+            this.bttnhome.UseVisualStyleBackColor = true;
+            this.bttnhome.Click += new System.EventHandler(this.bttnhome_Click);
             // 
             // Overzicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(797, 476);
+            this.Controls.Add(this.bttnhome);
             this.Controls.Add(this.gvlTmp);
             this.Controls.Add(this.bttntemp);
             this.Controls.Add(this.bttnexp);
@@ -129,5 +141,6 @@
         private System.Windows.Forms.Button bttnexp;
         private System.Windows.Forms.Button bttntemp;
         private System.Windows.Forms.ListBox gvlTmp;
+        private System.Windows.Forms.Button bttnhome;
     }
 }

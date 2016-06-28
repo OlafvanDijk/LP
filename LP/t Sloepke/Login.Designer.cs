@@ -33,12 +33,13 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtNaam = new System.Windows.Forms.TextBox();
             this.bttnLogin = new System.Windows.Forms.Button();
+            this.bttnhome = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(31, 28);
+            this.lblEmail.Location = new System.Drawing.Point(22, 28);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 0;
@@ -47,7 +48,7 @@
             // lblNaam
             // 
             this.lblNaam.AutoSize = true;
-            this.lblNaam.Location = new System.Drawing.Point(31, 82);
+            this.lblNaam.Location = new System.Drawing.Point(22, 82);
             this.lblNaam.Name = "lblNaam";
             this.lblNaam.Size = new System.Drawing.Size(38, 13);
             this.lblNaam.TabIndex = 1;
@@ -55,21 +56,21 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(34, 54);
+            this.txtEmail.Location = new System.Drawing.Point(25, 54);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(204, 20);
             this.txtEmail.TabIndex = 2;
             // 
             // txtNaam
             // 
-            this.txtNaam.Location = new System.Drawing.Point(34, 111);
+            this.txtNaam.Location = new System.Drawing.Point(25, 111);
             this.txtNaam.Name = "txtNaam";
             this.txtNaam.Size = new System.Drawing.Size(204, 20);
             this.txtNaam.TabIndex = 3;
             // 
             // bttnLogin
             // 
-            this.bttnLogin.Location = new System.Drawing.Point(163, 166);
+            this.bttnLogin.Location = new System.Drawing.Point(154, 166);
             this.bttnLogin.Name = "bttnLogin";
             this.bttnLogin.Size = new System.Drawing.Size(75, 23);
             this.bttnLogin.TabIndex = 4;
@@ -77,11 +78,22 @@
             this.bttnLogin.UseVisualStyleBackColor = true;
             this.bttnLogin.Click += new System.EventHandler(this.bttnLogin_Click);
             // 
+            // bttnhome
+            // 
+            this.bttnhome.Location = new System.Drawing.Point(25, 166);
+            this.bttnhome.Name = "bttnhome";
+            this.bttnhome.Size = new System.Drawing.Size(75, 23);
+            this.bttnhome.TabIndex = 5;
+            this.bttnhome.Text = "Home";
+            this.bttnhome.UseVisualStyleBackColor = true;
+            this.bttnhome.Click += new System.EventHandler(this.bttnhome_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(269, 206);
+            this.Controls.Add(this.bttnhome);
             this.Controls.Add(this.bttnLogin);
             this.Controls.Add(this.txtNaam);
             this.Controls.Add(this.txtEmail);
@@ -101,5 +113,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtNaam;
         private System.Windows.Forms.Button bttnLogin;
+        private System.Windows.Forms.Button bttnhome;
     }
 }

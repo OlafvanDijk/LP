@@ -33,5 +33,12 @@ namespace _t_Sloepke
             Huur_menu huurmenu = new Huur_menu();
             huurmenu.Show();
         }
+
+        private void bttnoverzicht_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Overzicht overzicht = new Overzicht();
+            overzicht.Show();
+        }
     }
 }

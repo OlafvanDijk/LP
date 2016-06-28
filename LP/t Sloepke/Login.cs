@@ -33,5 +33,12 @@ namespace _t_Sloepke
                 MessageBox.Show("Geen account gevonden");
             }
         }
+
+        private void bttnhome_Click(object sender, EventArgs e)
+        {
+            Home Home = (Home)Application.OpenForms["Home"];
+            Home.Show();
+            this.Close();
+        }
     }
 }

@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using _t_Sloepke.Business;
-using System.IO;
 using _t_Sloepke.Business.BootFolder;
+using _t_Sloepke;
 
 namespace t_Sloepke
 {
@@ -85,6 +85,13 @@ namespace t_Sloepke
                 DataHandler.checkdat(a);
                 gvlTmp.DataSource = DataHandler.gevoel();
             }
+        }
+
+        private void bttnhome_Click(object sender, EventArgs e)
+        {
+            Home Home = (Home)Application.OpenForms["Home"];
+            Home.Show();
+            this.Close();
         }
     }
 }

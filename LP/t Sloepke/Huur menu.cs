@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using _t_Sloepke.Business;
 using _t_Sloepke.Business.BootFolder;
+using _t_Sloepke;
 
 namespace t_Sloepke
 {
@@ -27,6 +28,15 @@ namespace t_Sloepke
             foreach (string artikel in DataHandler.getArtikelen())
             {
                 ArtL.Items.Add(artikel);
+            }
+
+            if (DataHandler.email != string.Empty)
+            {
+                bttninuitlog.Text = "Uitloggen";
+            }
+            else
+            {
+                bttninuitlog.Text = "Home";
             }
 
             DateV.Value = DateTime.Now;
@@ -215,6 +225,7 @@ namespace t_Sloepke
                         lblemail.Visible = false;
                         txtnaam.Visible = false;
                         txtemail.Visible = false;
+                        bttninuitlog.Text = "Uitloggen";
                     }
                 }
                 else
@@ -306,6 +317,17 @@ namespace t_Sloepke
             Overzicht over = new Overzicht();
             over.Show();
             this.Close();
+        }
+
+        private void bttninuitlog_Click(object sender, EventArgs e)
+        {
+            Home Home = (Home)Application.OpenForms["Home"];
+            if (this.Text == "Uitloggen")
+            {
+                DataHandler.email = string.Empty;
+            }
+            this.Close();
+            Home.Show();
         }
     }
 }

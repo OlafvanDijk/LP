@@ -32,6 +32,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.bttnLogin = new System.Windows.Forms.Button();
             this.bttnBoot = new System.Windows.Forms.Button();
+            this.bttnoverzicht = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -66,11 +67,22 @@
             this.bttnBoot.UseVisualStyleBackColor = true;
             this.bttnBoot.Click += new System.EventHandler(this.bttnBoot_Click);
             // 
+            // bttnoverzicht
+            // 
+            this.bttnoverzicht.Location = new System.Drawing.Point(186, 253);
+            this.bttnoverzicht.Name = "bttnoverzicht";
+            this.bttnoverzicht.Size = new System.Drawing.Size(75, 23);
+            this.bttnoverzicht.TabIndex = 3;
+            this.bttnoverzicht.Text = "Overzicht";
+            this.bttnoverzicht.UseVisualStyleBackColor = true;
+            this.bttnoverzicht.Click += new System.EventHandler(this.bttnoverzicht_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 301);
+            this.Controls.Add(this.bttnoverzicht);
             this.Controls.Add(this.bttnBoot);
             this.Controls.Add(this.bttnLogin);
             this.Controls.Add(this.textBox1);
@@ -86,6 +98,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button bttnLogin;
         private System.Windows.Forms.Button bttnBoot;
+        private System.Windows.Forms.Button bttnoverzicht;
     }
 }
 

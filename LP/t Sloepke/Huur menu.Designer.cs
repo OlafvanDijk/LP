@@ -69,6 +69,7 @@
             this.txtemail = new System.Windows.Forms.TextBox();
             this.lblemail = new System.Windows.Forms.Label();
             this.bttnOverzicht = new System.Windows.Forms.Button();
+            this.bttninuitlog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.budget)).BeginInit();
             this.GBPeriode.SuspendLayout();
             this.varen.SuspendLayout();
@@ -412,9 +413,9 @@
             // 
             // MaakHC
             // 
-            this.MaakHC.Location = new System.Drawing.Point(301, 515);
+            this.MaakHC.Location = new System.Drawing.Point(529, 491);
             this.MaakHC.Name = "MaakHC";
-            this.MaakHC.Size = new System.Drawing.Size(157, 23);
+            this.MaakHC.Size = new System.Drawing.Size(159, 23);
             this.MaakHC.TabIndex = 0;
             this.MaakHC.Text = "Maak Huurcontract";
             this.MaakHC.UseVisualStyleBackColor = true;
@@ -422,7 +423,7 @@
             // 
             // txtnaam
             // 
-            this.txtnaam.Location = new System.Drawing.Point(55, 517);
+            this.txtnaam.Location = new System.Drawing.Point(330, 519);
             this.txtnaam.Name = "txtnaam";
             this.txtnaam.Size = new System.Drawing.Size(143, 20);
             this.txtnaam.TabIndex = 1;
@@ -430,7 +431,7 @@
             // lblnaam
             // 
             this.lblnaam.AutoSize = true;
-            this.lblnaam.Location = new System.Drawing.Point(11, 520);
+            this.lblnaam.Location = new System.Drawing.Point(286, 522);
             this.lblnaam.Name = "lblnaam";
             this.lblnaam.Size = new System.Drawing.Size(38, 13);
             this.lblnaam.TabIndex = 31;
@@ -438,7 +439,7 @@
             // 
             // txtemail
             // 
-            this.txtemail.Location = new System.Drawing.Point(55, 491);
+            this.txtemail.Location = new System.Drawing.Point(330, 493);
             this.txtemail.Name = "txtemail";
             this.txtemail.Size = new System.Drawing.Size(143, 20);
             this.txtemail.TabIndex = 32;
@@ -446,7 +447,7 @@
             // lblemail
             // 
             this.lblemail.AutoSize = true;
-            this.lblemail.Location = new System.Drawing.Point(12, 494);
+            this.lblemail.Location = new System.Drawing.Point(287, 496);
             this.lblemail.Name = "lblemail";
             this.lblemail.Size = new System.Drawing.Size(35, 13);
             this.lblemail.TabIndex = 33;
@@ -462,11 +463,22 @@
             this.bttnOverzicht.UseVisualStyleBackColor = true;
             this.bttnOverzicht.Click += new System.EventHandler(this.bttnOverzicht_Click);
             // 
+            // bttninuitlog
+            // 
+            this.bttninuitlog.Location = new System.Drawing.Point(11, 512);
+            this.bttninuitlog.Name = "bttninuitlog";
+            this.bttninuitlog.Size = new System.Drawing.Size(103, 23);
+            this.bttninuitlog.TabIndex = 35;
+            this.bttninuitlog.Text = "Home";
+            this.bttninuitlog.UseVisualStyleBackColor = true;
+            this.bttninuitlog.Click += new System.EventHandler(this.bttninuitlog_Click);
+            // 
             // Huur_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 549);
+            this.Controls.Add(this.bttninuitlog);
             this.Controls.Add(this.bttnOverzicht);
             this.Controls.Add(this.lblemail);
             this.Controls.Add(this.txtemail);
@@ -553,5 +565,6 @@
         private System.Windows.Forms.TextBox txtemail;
         private System.Windows.Forms.Label lblemail;
         private System.Windows.Forms.Button bttnOverzicht;
+        private System.Windows.Forms.Button bttninuitlog;
     }
 }
