@@ -119,8 +119,8 @@
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
     <value>In dit programma kunt u boten huren. Als u al een account heeft moet u eerst inloggen
-voordat u een boot huurt. Als je nog geen account hebt dan kan je op account maken klikken
-of je vult de huur gegevens in. Als u kiest voor de huur gegevens dan zal het programma
+voordat u een boot huurt. Als je nog geen account hebt dan kan je op boot huren klikken
+en dan vult u huur gegevens in. Als u de huur gegevens in heeft gevult dan zal het programma
 om uw naam en email vragen. De volgende keer kunt u met deze gegevens inloggen.</value>
   </data>
 </root>
