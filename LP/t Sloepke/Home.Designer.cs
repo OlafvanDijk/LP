@@ -87,7 +87,7 @@
             this.Controls.Add(this.bttnLogin);
             this.Controls.Add(this.textBox1);
             this.Name = "Home";
-            this.Text = "Form1";
+            this.Text = "Home";
             this.ResumeLayout(false);
             this.PerformLayout();
 

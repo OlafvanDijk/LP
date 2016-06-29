@@ -322,7 +322,7 @@ namespace t_Sloepke
         private void bttninuitlog_Click(object sender, EventArgs e)
         {
             Home Home = (Home)Application.OpenForms["Home"];
-            if (this.Text == "Uitloggen")
+            if (bttninuitlog.Text == "Uitloggen")
             {
                 DataHandler.email = string.Empty;
             }
