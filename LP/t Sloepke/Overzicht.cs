@@ -83,7 +83,10 @@ namespace t_Sloepke
                 }
                 DataHandler.temp();
                 DataHandler.checkdat(a);
-                gvlTmp.DataSource = DataHandler.gevoel();
+                foreach (string item in DataHandler.gevoel())
+                {
+                    gvlTmp.Items.Add(item);
+                }
             }
         }
 
